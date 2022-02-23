@@ -28,7 +28,7 @@ $('#datatable').DataTable();
   
 $('.sa-delete').on('click',function(){
     let form_id=$(this).data('form-id');
-
+// alert(form_id);
     swal({
   title: "Are you sure?",
   text: "Once deleted, you will not be able to recover this imaginary file!",
@@ -36,10 +36,9 @@ $('.sa-delete').on('click',function(){
   buttons: true,
   dangerMode: true,
 })
-
 .then((willDelete) => {
   if (willDelete) {
-    $('#'+form-id).submit();
+    $('#'+form_id).submit();
   }
 });
 })
