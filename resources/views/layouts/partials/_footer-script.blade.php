@@ -10,14 +10,38 @@
 <script src="{{asset ('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset ('admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset ('admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+{{-- sweetAlert  --}}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     $(document).ready(function() {
 $('#datatable').DataTable();
 } );
+
+
+
+
+
     </script>
- {{-- <script type="text/javascript">
+ <script type="text/javascript">
   
-</script> --}}
+$('.sa-delete').on('click',function(){
+    let form_id=$(this).data('form-id');
+
+    swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+
+.then((willDelete) => {
+  if (willDelete) {
+    $('#'+form-id).submit();
+  }
+});
+})
+</script>
 @stack('scripts')

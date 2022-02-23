@@ -29,7 +29,7 @@ class CategoriesController extends Controller
             'name' => $request->name,
         ]);
       flash('Category Successfully add')->success();
-      return back();
+      return redirect()->route('categories.index');
     
     }
 
@@ -65,6 +65,9 @@ return redirect()->route('categories.index');
   
     public function destroy($id)
     {
-        //
+        $category=Category::findOrFail($id);
+        $category->delete();
+        flash('Category Delete Successfully ')->success();
+return redirect()->route('categories.index');
     }
 }

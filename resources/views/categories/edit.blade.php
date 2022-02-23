@@ -12,7 +12,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-              <li class="breadcrumb-item active">Category Update </li>
+              <li class="breadcrumb-item active"><a href="{{ route('categories.index') }}">Category List</a> </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
