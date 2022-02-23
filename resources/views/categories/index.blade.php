@@ -20,9 +20,9 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
-<table id="datatable" class="display table table-bordered" style="width:100%">
+<table id="datatable" class="display table-sm table-bordered " style="width:100%">
     <thead>
-        <tr>
+        <tr class="text-center">
             <th>SL NO</th>
             <th>Category Name</th>
             <th>Action</th>
@@ -30,11 +30,22 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
+
+        @if ($categories)
+        @foreach ($categories as $key=>$category)
+        <tr class="text-center">
+            <td><b>{{ ++$key }}</b></td>
+            <td>{{ $category->name }}</td>
+            <td >
+                <a href="{{ route('categories.edit',$category->id) }}" class="btn btn-sm btn-info"> <i class="fa fa-edit"></i></a>
+                <a href="" class="btn btn-sm btn-info"> <i class="fa fa-trash"></i></a>
+            
+            </td>
         </tr>
+        @endforeach
+            
+        @endif
+       
        
        
         
