@@ -5,11 +5,11 @@ Store Inventory Management System
         Laravel 8 
         Vuejs
 
-Product  Feature : 
+Project  Feature : 
 >Product Category
 
 
 
 Some Help commnet Commnet 
-php artisan make:controller ProductController --resource --model=Product
+>php artisan make:controller ProductController --resource --model=Product
 
