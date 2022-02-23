@@ -6,17 +6,17 @@ Store Inventory Management System </br>
         Vuejs </br>
 
 <h1>Project  Feature :</h1> 
->Manage system user
->Product Category
->Product Size
->Product 
->Product stock in/out
->Process returen product
->Show Notification message for every action
->Manage Site Setting [Title,Logo ect]
+>Manage system user </br>
+>Product Category </br>
+>Product Size </br>
+>Product </br>
+>Product stock in/out </br> 
+>Process returen product </br>
+>Show Notification message for every action </br>
+>Manage Site Setting [Title,Logo ect] </br>
 
 
 
-Some Help commnet Commnet  </br>
->php artisan make:controller ProductController --resource --model=Product
+<h4>Some Help commnet Commnet </h4> </br>
+>php artisan make:controller ProductController --resource --model=Product </br>
 
