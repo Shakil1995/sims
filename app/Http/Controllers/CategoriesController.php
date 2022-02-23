@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Category;
 
 use Illuminate\Http\Request;
 
@@ -9,7 +10,7 @@ class CategoriesController extends Controller
     
     public function index()
     {
-        //
+        return view('categories.index');
     }
 
     public function create()
@@ -20,7 +21,15 @@ class CategoriesController extends Controller
   
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|min:2|max:50|unique:categories'
+        ]);
+        Category::insert([
+            'name' => $request->name,
+        ]);
+      flash('Category Successfully add')->success();
+      return back();
+    
     }
 
     
