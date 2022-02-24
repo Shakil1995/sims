@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Size;
 
 use Illuminate\Http\Request;
 
@@ -8,7 +9,8 @@ class SizesController extends Controller
 {
     public function index()
     {
-        //
+        $viewBag['sizes'] = Size::orderBy('id','desc')->get();
+        return view('sizes.index', $viewBag);
     }
 
     
