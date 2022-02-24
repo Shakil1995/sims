@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\brand;
+use App\Models\Brand;
 
 use Illuminate\Http\Request;
 
@@ -10,7 +10,7 @@ class BrandController extends Controller
    
     public function index()
     {
-        $viewBag['brands'] = brand::orderBy('id','desc')->get();
+        $viewBag['brands'] = Brand::orderBy('id','desc')->get();
         return view('brands.index', $viewBag);
     }
 
@@ -26,7 +26,7 @@ class BrandController extends Controller
         $validated = $request->validate([
             'name' => 'required|min:2|max:50|unique:brands'
         ]);
-        brand::insert([
+        Brand::insert([
             'name' => $request->name,
         ]);
       flash('brands Add Successfully ')->success();
@@ -35,18 +35,30 @@ class BrandController extends Controller
 
     public function show($id)
     {
-        //
+
     }
 
     public function edit($id)
     {
-        //
+        
+        $viewBag['brand']=Brand::findOrFail($id);
+        return view('brands.edit',$viewBag);
     }
 
    
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|min:2|max:50|unique:brands,name,'.$id
+        ]);
+// dd($request);
+$brnad=Brand::findOrFail($id);
+$brnad->name = $request->name;
+if($brnad->isDirty()){
+    $brnad->update();
+}
+flash('Brnad Update Successfully ')->success();
+return redirect()->route('brands.index');
     }
 
   
