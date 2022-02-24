@@ -19,7 +19,7 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
- <a href="{{ route('categories.create') }}"  class="btn btn-success mb-3">Add Size</a>
+ <a href="{{ route('sizes.create') }}"  class="btn btn-success mb-3">Add Size</a>
   <!-- /.content-header -->
 <table id="datatable" class="display table-sm table-bordered " style="width:100%">
     <thead>
@@ -38,10 +38,10 @@
             <td><b>{{ ++$key }}</b></td>
             <td>{{ $size->name }}</td>
             <td >
-                <a href="{{ route('size.edit',$size->id) }}" class="btn btn-sm btn-info"> <i class="fa fa-edit"></i></a>
+                <a href="{{ route('sizes.edit',$size->id) }}" class="btn btn-sm btn-info"> <i class="fa fa-edit"></i></a>
                 <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="size-delete-{{ $size->id }}"> <i class="fa fa-trash"></i></a>
             
-                <form id="size-delete-{{ $size->id }}" action="{{ route('size.destroy',$size->id) }}" method="post">
+                <form id="size-delete-{{ $size->id }}" action="{{ route('sizes.destroy',$size->id) }}" method="post">
                 @csrf
             @method('DELETE')
             </form>

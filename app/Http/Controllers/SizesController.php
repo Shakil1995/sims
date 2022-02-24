@@ -16,13 +16,20 @@ class SizesController extends Controller
     
     public function create()
     {
-        //
+        return view('sizes.create');
     }
 
     
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:50|unique:categories'
+        ]);
+        Size::insert([
+            'name' => $request->name,
+        ]);
+      flash('Size Successfully add')->success();
+      return redirect()->route('sizes.index');
     }
 
     public function show($id)
