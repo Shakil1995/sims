@@ -41,7 +41,7 @@
                 <a href="{{ route('brands.edit',$brand->id) }}" class="btn btn-sm btn-info"> <i class="fa fa-edit"></i></a>
                 <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="brand-delete-{{ $brand->id }}"> <i class="fa fa-trash"></i></a>
             
-                <form id="brand-delete-{{ $brand->id }}" action="{{ route('brands.destroy',$brand->id) }}" method="post">
+                 <form id="brand-delete-{{ $brand->id }}" action="{{ route('brands.destroy',$brand->id) }}" method="post">
                 @csrf
             @method('DELETE')
             </form>

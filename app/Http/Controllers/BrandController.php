@@ -29,7 +29,7 @@ class BrandController extends Controller
         Brand::insert([
             'name' => $request->name,
         ]);
-      flash('brands Add Successfully ')->success();
+      flash('Brand Add Successfully ')->success();
       return redirect()->route('brands.index');
     }
 
@@ -64,6 +64,9 @@ return redirect()->route('brands.index');
   
     public function destroy($id)
     {
-        //
+        $brand=Brand::findOrFail($id);
+        $brand->delete();
+        flash('Brand Delete Successfully ')->success();
+return redirect()->route('brands.index');
     }
 }
