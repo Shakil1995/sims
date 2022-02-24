@@ -17,6 +17,6 @@ Store Inventory Management System </br>
 
 
 
-<h4>Some Help commnet Commnet </h4> </br>
+<h4>Some Help commnet  </h4> </br>
 >php artisan make:controller ProductController --resource --model=Product </br>
 
