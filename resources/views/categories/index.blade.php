@@ -20,7 +20,10 @@
     </div><!-- /.container-fluid -->
   </div>
  <a href="{{ route('categories.create') }}"  class="btn btn-success mb-3">Add Category</a>
-  <!-- /.content-header -->
+
+ <example-component> </example-component>
+
+
 <table id="datatable" class="display table-sm table-bordered " style="width:100%">
     <thead>
         <tr class="text-center">

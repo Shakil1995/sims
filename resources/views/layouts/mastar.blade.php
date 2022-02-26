@@ -17,21 +17,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
 @include('layouts.partials._sidebar')
 
-   <!-- Content Wrapper. Contains page content -->
-   <div class="content-wrapper">
 
-    <!-- Main content -->
+
+   <div class="content-wrapper" >
     <div class="content">
-      <div class="container-fluid">
-        @include('flash::message')
-  @yield('content')
-
-
-      </div><!-- /.container-fluid -->
+      <div class="container-fluid" id="app">
+            @include('flash::message')
+            @yield('content')
+        </div>
     </div>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
+
 
 
   <!-- Main Footer -->
