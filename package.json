@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "vue": "^3.2.31",
+        "vue-moments-ago": "^0.2.0",
         "vue-template-compiler": "^2.6.14"
     }
 }

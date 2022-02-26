@@ -1,7 +1,7 @@
 
 
 
-Store Inventory Management System </br> 
+<h1> Store Inventory Management System  </h1> </br> 
         Laravel 8 </br>
         Vuejs </br>
 
