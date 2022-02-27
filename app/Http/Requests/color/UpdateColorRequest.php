@@ -13,7 +13,7 @@ class UpdateColorRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class UpdateColorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'color_name' => 'required|min:2|max:50|unique:colors,color_name,'
         ];
     }
 }

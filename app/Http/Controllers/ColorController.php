@@ -45,13 +45,20 @@ class ColorController extends Controller
 
     public function edit(Color $color)
     {
-        //
+        $viewBag['color'] = $color;
+        return view('colors.edit',$viewBag);
     }
 
   
-    public function update(Request $request, Color $color)
+    public function update(UpdateColorRequest $request, Color $color)
     {
-        //
+        $color = $color;
+        $color->color_name = $request->color_name;
+        if($color->isDirty()){
+            $color->update();
+}
+        flash('Color Update Successfully ')->success();
+        return redirect()->route('colors.index');
     }
 
    
