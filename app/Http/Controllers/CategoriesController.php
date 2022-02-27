@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Category;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 
 use Illuminate\Http\Request;
 
@@ -20,17 +22,19 @@ class CategoriesController extends Controller
     }
 
   
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|min:2|max:50|unique:categories'
-        ]);
-        Category::insert([
-            'name' => $request->name,
-        ]);
-      flash('Category Successfully add')->success();
-      return redirect()->route('categories.index');
-    
+    try {
+        $category = new Category();
+        $category->name = $request->name;
+        $category->save();
+
+        flash('Category Successfully added.')->success();
+        return redirect()->route('categories.index');
+    } catch (\Throwable $th) {
+        throw $th;
+    }
+
     }
 
     
@@ -40,34 +44,31 @@ class CategoriesController extends Controller
     }
 
   
-    public function edit($id)
+    public function edit(Category $category)
     {
-    $viewBag['category']=Category::findOrFail($id);
+    $viewBag['category'] = $category;
     return view('categories.edit',$viewBag);
     }
 
   
-    public function update(Request $request, $id)
+    public function update(UpdateCategoryRequest $request,Category $category)
     {
-        $validated = $request->validate([
-            'name' => 'required|min:2|max:50|unique:categories,name,'.$id
-        ]);
-// dd($request);
-$category=Category::findOrFail($id);
-$category->name = $request->name;
-if($category->isDirty()){
-    $category->update();
+
+        $category = $category;
+        $category->name = $request->name;
+        if($category->isDirty()){
+            $category->update();
 }
-flash('Category Update Successfully ')->success();
-return redirect()->route('categories.index');
+        flash('Category Update Successfully ')->success();
+        return redirect()->route('categories.index');
     }
 
   
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category=Category::findOrFail($id);
+        $category = $category;
         $category->delete();
         flash('Category Delete Successfully ')->success();
-return redirect()->route('categories.index');
+    return redirect()->route('categories.index');
     }
 }
