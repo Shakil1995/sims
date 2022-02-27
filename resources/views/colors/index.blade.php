@@ -19,7 +19,7 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
- <a href="{{ route('colors.create') }}"  class="btn btn-success mb-3">Add Category</a>
+ <a href="{{ route('colors.create') }}"  class="btn btn-success mb-3">Add Color</a>
 
  <example-component> </example-component>
 
