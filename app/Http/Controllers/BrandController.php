@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Brand;
-
+use App\Http\Requests\brand\StoreBrandRequest;
+use App\Http\Requests\brand\UpdateBrandRequest;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -21,16 +22,19 @@ class BrandController extends Controller
     }
 
    
-    public function store(Request $request)
+    public function store(StoreBrandRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|min:2|max:50|unique:brands'
-        ]);
-        Brand::insert([
-            'name' => $request->name,
-        ]);
-      flash('Brand Add Successfully ')->success();
-      return redirect()->route('brands.index');
+      
+      try {
+        $brand = new Brand();
+        $brand->name = $request->name;
+        $brand->save();
+
+        flash('Brand Successfully added.')->success();
+        return redirect()->route('brands.index');
+    } catch (\Throwable $th) {
+        throw $th;
+    }
     }
 
     public function show($id)
@@ -38,35 +42,30 @@ class BrandController extends Controller
 
     }
 
-    public function edit($id)
+    public function edit(Brand $brand)
     {
         
-        $viewBag['brand']=Brand::findOrFail($id);
+        $viewBag['brand'] = $brand;
         return view('brands.edit',$viewBag);
     }
 
    
-    public function update(Request $request, $id)
+    public function update(UpdateBrandRequest $request, $id)
     {
-        $validated = $request->validate([
-            'name' => 'required|min:2|max:50|unique:brands,name,'.$id
-        ]);
-// dd($request);
-$brnad=Brand::findOrFail($id);
-$brnad->name = $request->name;
-if($brnad->isDirty()){
-    $brnad->update();
-}
-flash('Brnad Update Successfully ')->success();
-return redirect()->route('brands.index');
+        $brnad=Brand::findOrFail($id);
+        $brnad->name = $request->name;
+        if($brnad->isDirty()){
+            $brnad->update();
+        }
+        flash('Brnad Update Successfully ')->success();
+        return redirect()->route('brands.index');
     }
 
   
-    public function destroy($id)
+    public function destroy(Brand $brand)
     {
-        $brand=Brand::findOrFail($id);
         $brand->delete();
         flash('Brand Delete Successfully ')->success();
-return redirect()->route('brands.index');
+  return redirect()->route('brands.index');
     }
 }
