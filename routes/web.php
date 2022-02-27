@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\CategoriesController;
 use \App\Http\Controllers\BrandController;
 use \App\Http\Controllers\SizesController;
+use \App\Http\Controllers\ColorController;
 
 
 Route::get('/', function () {
@@ -19,4 +20,5 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::resource('categories',CategoriesController::class);
     Route::resource('brands',BrandController::class);
     Route::resource('sizes',SizesController::class);
+    Route::resource('colors',ColorController::class);
 });

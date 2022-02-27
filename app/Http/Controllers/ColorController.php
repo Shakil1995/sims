@@ -10,7 +10,8 @@ class ColorController extends Controller
    
     public function index()
     {
-        //
+        $viewBag['colors'] = Color::orderBy('id','desc')->get();
+        return view('colors.index', $viewBag);
     }
 
   
