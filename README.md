@@ -19,4 +19,5 @@
 
 <h4>Some Help commnet  </h4> </br>
 >php artisan make:controller ProductController --resource --model=Product </br>
+php artisan make:request color/StoreProductRequest
 

@@ -39,12 +39,12 @@
         @foreach ($colors as $key=>$color)
         <tr class="text-center">
             <td><b>{{ ++$key }}</b></td>
-            <td>{{ $color->name }}</td>
+            <td>{{ $color->color_name }}</td>
             <td >
-                <a href="{{ route('categories.edit',$color->id) }}" class="btn btn-sm btn-info"> <i class="fa fa-edit"></i></a>
-                <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="category-delete-{{ $color->id }}"> <i class="fa fa-trash"></i></a>
+                <a href="{{ route('colors.edit',$color->id) }}" class="btn btn-sm btn-info"> <i class="fa fa-edit"></i></a>
+                <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="color-delete-{{ $color->id }}"> <i class="fa fa-trash"></i></a>
             
-                <form id="category-delete-{{ $color->id }}" action="{{ route('categories.destroy',$color->id) }}" method="post">
+                <form id="color-delete-{{ $color->id }}" action="{{ route('colors.destroy',$color->id) }}" method="post">
                 @csrf
             @method('DELETE')
             </form>

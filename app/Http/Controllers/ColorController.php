@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\color\StoreColorRequest;
+use App\Http\Requests\color\UpdateColorRequest;
 use App\Models\Color;
 use Illuminate\Http\Request;
 
@@ -17,13 +18,23 @@ class ColorController extends Controller
   
     public function create()
     {
-        //
+        return view('colors.create');
     }
 
    
-    public function store(Request $request)
+    public function store(StoreColorRequest $request)
     {
-        //
+        // dd($request);
+        try {
+            $Color = new Color();
+            $Color->color_name = $request->color_name;
+            $Color->save();
+
+            flash('Color Successfully added.')->success();
+            return redirect()->route('colors.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
   
