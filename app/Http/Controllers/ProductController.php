@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Category;
-use App\Models\Brand;
 use App\Models\Size;
+use App\Models\Brand;
 use App\Models\Color;
 use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use App\Http\Requests\product\StoreProductRequest;
+use App\Http\Requests\product\UpdateProductRequest;
+
 
 class ProductController extends Controller
 {
@@ -29,9 +34,36 @@ class ProductController extends Controller
     }
 
   
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-       dd($request);
+//  dd($request);
+$slug=Str::slug($request->product_name, '-');
+    // $photo = $request->product_img;
+    // dd($photo);
+    // $photoname = uniqid() . '.' . $photo->getClientOriginalExtension();
+    // Image::make($photo)->resize(320, 240)->save(public_path('files/images/' . $photoname));
+       try {
+        $product = new Product();
+        $product->category_id  = $request->category_id ;
+        $product->brand_id   = $request->brand_id  ;
+        $product->size_id   = $request->size_id  ;
+          $product->color_id   = $request->color_id ;
+          $product->product_name  = $request->product_name ;
+      $product->name_slug  = $slug ;
+        //   $product->product_img ='files/images/' . $photoname ;
+      $product->product_buy_price  = $request->product_buy_price ;
+       $product->product_sell_price  = $request->product_sell_price ;
+         $product->product_stock  = $request->product_stock ;
+        $product->product_description  = $request->product_description ;
+      $product->status  = $request->status ;
+          
+        $product->save();
+
+        flash('product Successfully added.')->success();
+        return redirect()->route('products.index');
+    } catch (\Throwable $th) {
+        throw $th;
+    }
     }
 
  

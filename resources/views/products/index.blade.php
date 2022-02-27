@@ -42,7 +42,10 @@
         @foreach ($products as $key=>$product)
         <tr class="text-center">
             <td><b>{{ ++$key }}</b></td>
-            <td>{{ $product->name }}</td>
+            <td>{{ $product->product_img  }}</td>
+            <td>{{ $product->product_name  }}</td>
+            <td>{{ $product->product_sell_price }}</td>
+            <td>{{ $product->product_stock }}</td>
             <td >
                 <a href="{{ route('products.edit',$product->id) }}" class="btn btn-sm btn-info"> <i class="fa fa-edit"></i></a>
                 <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="product-delete-{{ $product->id }}"> <i class="fa fa-trash"></i></a>

@@ -45,7 +45,7 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="">Brand</label>
-                  <select class="form-control" name="brand_id " required="">
+                  <select class="form-control" name="brand_id" required="">
                     @foreach ($brands as $brand)
                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                     @endforeach
@@ -58,7 +58,7 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="">Size</label>
-                  <select class="form-control" name="size_id  " required="">
+                  <select class="form-control" name="size_id" required="">
                     @foreach ($sizes as $size)
                         <option value="{{ $size->id }}">{{ $size->name }}</option>
                     @endforeach
@@ -86,7 +86,7 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for=""> Product Name</label>
-                  <input type="text" class="form-control" id="" name="product_name" placeholder="Enter Product name">
+                  <input type="text" class="form-control" id="" name="product_name" placeholder="Enter Product Name ">
                   @if ($errors->has('product_name'))
                     <span class="text-danger">{{ $errors->first('product_name') }}</span>
                   @endif
@@ -144,7 +144,7 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="">Product Status</label>
-                  <select class="form-control" name="color_id " required="">
+                  <select class="form-control" name="status " required="">
                         <option value="1">Active</option>
                         <option value="0">InActive</option>
                 </select>
