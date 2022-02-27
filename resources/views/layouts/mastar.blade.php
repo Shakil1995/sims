@@ -19,9 +19,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-   <div class="content-wrapper" >
+   <div class="content-wrapper"  id="app">
     <div class="content">
-      <div class="container-fluid" id="app">
+      <div class="container-fluid" >
             @include('flash::message')
             @yield('content')
         </div>

@@ -18,6 +18,19 @@
 
 
 <h4>Some Help commnet  </h4> </br>
+composer create-project laravel/laravel:^8.0 sims
+php artisan make:migration create_products_table
 >php artisan make:controller ProductController --resource --model=Product </br>
 php artisan make:request color/StoreProductRequest
+
+
+
+
+
+
+<h5>Vue Install:</h5>
+
+I install npm again with npm install because I was told some packages weren't installed. </br>
+I install vue again with npm install vue,  </br>
+I did npm run dev and finally npm run watch. </br>
 

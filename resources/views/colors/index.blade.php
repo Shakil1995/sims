@@ -21,9 +21,6 @@
   </div>
  <a href="{{ route('colors.create') }}"  class="btn btn-success mb-3">Add Color</a>
 
- <example-component> </example-component>
-
-
 <table id="datatable" class="display table-sm table-bordered " style="width:100%">
     <thead>
         <tr class="text-center">
