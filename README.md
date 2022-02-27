@@ -34,3 +34,10 @@ I install npm again with npm install because I was told some packages weren't in
 I install vue again with npm install vue,  </br>
 I did npm run dev and finally npm run watch. </br>
 
+<h6>image intervention</h6>
+
+composer require intervention/image </br>
+<!-- Add config/app.pph --></br>
+Intervention\Image\ImageServiceProvider::class  </br>
+'Image' => Intervention\Image\Facades\Image::class</br>
+
