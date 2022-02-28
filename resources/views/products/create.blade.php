@@ -37,8 +37,8 @@
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
-                                @if ($errors->has('name'))
-                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @if ($errors->has('category_id'))
+                                    <span class="text-danger">{{ $errors->first('category_id') }}</span>
                                 @endif
                             </div>
                         </div>
@@ -51,8 +51,8 @@
                                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                     @endforeach
                                 </select>
-                                @if ($errors->has('name'))
-                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @if ($errors->has('brand_id'))
+                                    <span class="text-danger">{{ $errors->first('brand_id') }}</span>
                                 @endif
                             </div>
                         </div>
@@ -65,8 +65,8 @@
                                         <option value="{{ $size->id }}">{{ $size->name }}</option>
                                     @endforeach
                                 </select>
-                                @if ($errors->has('size_id '))
-                                    <span class="text-danger">{{ $errors->first('size_id ') }}</span>
+                                @if ($errors->has('size_id'))
+                                    <span class="text-danger">{{ $errors->first('size_id') }}</span>
                                 @endif
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for=""> Product Name</label>
-                                <input type="text" class="form-control" id="" name="product_name"
+                                <input type="text" class="form-control" id="" value="{{ old('product_name') }}" name="product_name"
                                     placeholder="Enter Product Name ">
                                 @if ($errors->has('product_name'))
                                     <span class="text-danger">{{ $errors->first('product_name') }}</span>
@@ -99,7 +99,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="">SKU</label>
-                                <input type="text" class="form-control" id="" name="product_sku"
+                                <input type="text" class="form-control" id="" value="{{ old('product_sku') }}" name="product_sku"
                                     placeholder="Enter Product SKU ">
                                 @if ($errors->has('product_sku'))
                                     <span class="text-danger">{{ $errors->first('product_sku') }}</span>
@@ -109,7 +109,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="">Product Buy Price </label>
-                                <input type="number" class="form-control" id="" name="product_buy_price"
+                                <input type="number" class="form-control" id=""  value="{{ old('product_buy_price') }}" name="product_buy_price"
                                     placeholder="Enter Product Buy Price">
                                 @if ($errors->has('product_buy_price'))
                                     <span class="text-danger">{{ $errors->first('product_buy_price') }}</span>
@@ -120,7 +120,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="">Product Sell Price</label>
-                                <input type="number" class="form-control" id="" name="product_sell_price"
+                                <input type="number" class="form-control" id="" value="{{ old('product_sell_price') }}" name="product_sell_price"
                                     placeholder="Enter Product Sell Price ">
                                 @if ($errors->has('product_sell_price'))
                                     <span class="text-danger">{{ $errors->first('product_sell_price') }}</span>
@@ -131,7 +131,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="">Product Image</label>
-                                <input type="file" class="form-control" placeholder="product Images" name="product_img">
+                                <input type="file" class="form-control" value="{{ old('product_img') }}" name="product_img">
                                 @if ($errors->has('product_img'))
                                     <span class="text-danger">{{ $errors->first('product_img') }}</span>
                                 @endif
@@ -141,7 +141,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="">Product Stock</label>
-                                <input type="text" class="form-control" id="" name="product_stock"
+                                <input type="text" class="form-control" value="{{ old('product_stock') }}" name="product_stock"
                                     placeholder="Enter Product Stock ">
                                 @if ($errors->has('product_stock'))
                                     <span class="text-danger">{{ $errors->first('product_stock') }}</span>
@@ -152,7 +152,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="">Product Status</label>
-                                <select class="form-control" name="status" required="">
+                                <select class="form-control" name="status" value="{{ old('status') }}" >
                                   <option selected="" disabled="">== Choose Size ==</option>
                                     <option value="1">Active</option>
                                     <option value="0">InActive</option>
@@ -165,7 +165,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="">Product Description</label>
-                                <textarea type="text" class="form-control" id="" name="product_description"
+                                <textarea type="text" class="form-control"  value="{{ old('product_description') }}" id="" name="product_description"
                                     placeholder="Enter Product Description "></textarea>
                                 @if ($errors->has('product_description'))
                                     <span class="text-danger">{{ $errors->first('product_description') }}</span>

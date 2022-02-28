@@ -53,7 +53,7 @@
               @if($product->status==1)
                           <span class="badge badge-success">Active</span>
                           @else
-                          <span class="badge badge-danger">No</span>
+                          <span class="badge badge-danger"> No Active</span>
                         @endif  
             </td>
             <td >
