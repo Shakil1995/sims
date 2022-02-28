@@ -90,6 +90,9 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        //
+        unlink($product->product_img);
+        $product->delete();
+        flash('Product Delete Successfully ')->success();
+    return redirect()->route('products.index');
     }
 }

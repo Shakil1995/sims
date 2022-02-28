@@ -53,8 +53,6 @@ class CategoriesController extends Controller
   
     public function update(UpdateCategoryRequest $request,Category $category)
     {
-
-        $category = $category;
         $category->name = $request->name;
         if($category->isDirty()){
             $category->update();
@@ -66,7 +64,6 @@ class CategoriesController extends Controller
   
     public function destroy(Category $category)
     {
-        $category = $category;
         $category->delete();
         flash('Category Delete Successfully ')->success();
     return redirect()->route('categories.index');
