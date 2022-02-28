@@ -9,7 +9,4 @@ class Product extends Model
 {
     use HasFactory;
 
-    //const
-    public const STATUS_ACTIVE=1;
-    public const STATUS_INACTIVE=0;
 }

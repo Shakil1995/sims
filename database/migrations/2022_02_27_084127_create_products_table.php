@@ -28,7 +28,7 @@ class CreateProductsTable extends Migration
             $table->string('product_sell_price')->nullable();
             $table->string('product_stock')->nullable();
             $table->string('product_description')->nullable();
-            $table->boolean('status')->default(\App\Models\Product::STATUS_ACTIVE);
+            $table->string('status')->nullable();
             $table->timestamps();
 
 
