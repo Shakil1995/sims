@@ -37,12 +37,8 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        //    dd($request);
-
         $photo = $request->product_img;
-
         $photoname = uniqid() . '.' . $photo->getClientOriginalExtension();
-        // dd($photoname);
         Image::make($photo)->resize(320, 240)->save(public_path('files/images/' . $photoname));
 
         $slug = Str::slug($request->product_name, '-');
@@ -79,7 +75,12 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        //
+        $viewBag['categorys'] = Category::all();
+        $viewBag['brands'] = Brand::all();
+        $viewBag['sizes'] = Size::all();
+        $viewBag['colors'] = Color::all();
+        $viewBag['products'] = $product;
+        return view('products.edit',$viewBag);
     }
 
     public function update(Request $request, Product $product)
