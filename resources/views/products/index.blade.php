@@ -57,7 +57,7 @@
                         @endif  
             </td>
             <td >
-              <a href="{{ route('products.edit',$product->id) }}" class="btn btn-sm btn-primary"> <i class="fa fa-eye"></i></a>
+              <a href="{{ route('products.show',$product->id) }}" class="btn btn-sm btn-primary"> <i class="fa fa-eye"></i></a>
                 <a href="{{ route('products.edit',$product->id) }}" class="btn btn-sm btn-info"> <i class="fa fa-edit"></i></a>
                 <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="product-delete-{{ $product->id }}"> <i class="fa fa-trash"></i></a>
             

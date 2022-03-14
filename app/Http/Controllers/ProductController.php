@@ -75,11 +75,11 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $viewBag['categorys'] = Category::all();
+        $viewBag['categories'] = Category::all();
         $viewBag['brands'] = Brand::all();
         $viewBag['sizes'] = Size::all();
         $viewBag['colors'] = Color::all();
-        $viewBag['products'] = $product;
+        $viewBag['product'] = $product;
         return view('products.edit',$viewBag);
     }
 
