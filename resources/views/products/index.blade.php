@@ -54,7 +54,7 @@
                           <span class="badge badge-success">Active</span>
                           @else
                           <span class="badge badge-danger"> No Active</span>
-                        @endif  
+               @endif  
             </td>
             <td >
               <a href="{{ route('products.show',$product->id) }}" class="btn btn-sm btn-primary"> <i class="fa fa-eye"></i></a>

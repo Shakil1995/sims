@@ -141,7 +141,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="">Product Stock</label>
-                                <input type="text" class="form-control" value="{{ old('product_stock') }}" name="product_stock"
+                                <input type="number" class="form-control" value="{{ old('product_stock') }}" name="product_stock"
                                     placeholder="Enter Product Stock ">
                                 @if ($errors->has('product_stock'))
                                     <span class="text-danger">{{ $errors->first('product_stock') }}</span>
@@ -153,7 +153,7 @@
                             <div class="form-group">
                                 <label for="">Product Status</label>
                                 <select class="form-control" name="status" value="{{ old('status') }}" >
-                                  <option selected="" disabled="">== Choose Size ==</option>
+                                  <option selected="" disabled="">== Choose Status ==</option>
                                     <option value="1">Active</option>
                                     <option value="0">InActive</option>
                                 </select>

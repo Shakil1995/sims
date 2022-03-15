@@ -22,12 +22,8 @@
     $(document).ready(function() {
 $('#datatable').DataTable();
 } );
-
-
-
-
-
     </script>
+    
  <script type="text/javascript">
   
 $('.sa-delete').on('click',function(){

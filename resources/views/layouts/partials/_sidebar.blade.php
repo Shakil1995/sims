@@ -71,10 +71,19 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            {{-- <a href="{{ route('logout') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p> Logout </p>
-            </a>
+            </a> --}}
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <i class="nav-icon fas fa-th"></i>
+              <x-jet-dropdown-link href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                              this.closest('form').submit();">
+                  {{ __('Log Out') }}
+              </x-jet-dropdown-link>
+          </form>
           </li>
         </ul>
       </nav>

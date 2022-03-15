@@ -70,7 +70,7 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        //
+  
     }
 
     public function edit(Product $product)
@@ -80,12 +80,67 @@ class ProductController extends Controller
         $viewBag['sizes'] = Size::all();
         $viewBag['colors'] = Color::all();
         $viewBag['product'] = $product;
-        return view('products.edit',$viewBag);
+        return view('products.edit', $viewBag);
     }
 
     public function update(Request $request, Product $product)
     {
-        //
+        $oldImage = $request->oldImage;
+        $photo = $request->product_img;
+        $slug = Str::slug($request->product_name, '-');
+        try {
+            if ($photo) {
+                $photoname = uniqid() . '.' . $photo->getClientOriginalExtension();
+                Image::make($photo)->resize(320, 240)->save(public_path('files/images/' . $photoname));
+
+                $product = new Product();
+                $product->category_id  = $request->category_id;
+                $product->brand_id   = $request->brand_id;
+                $product->size_id   = $request->size_id;
+                $product->color_id   = $request->color_id;
+                $product->product_name  = $request->product_name;
+                $product->product_sku  = $request->product_sku;
+                $product->name_slug  = $slug;
+                $product->product_img = 'files/images/' . $photoname;
+                $product->product_buy_price  = $request->product_buy_price;
+                $product->product_sell_price  = $request->product_sell_price;
+                $product->product_stock  = $request->product_stock;
+                $product->product_description  = $request->product_description;
+                $product->status = $request->status;
+
+                // dd($product);
+                if ($product->isDirty()) {
+                    $product->update();
+                }
+
+                unlink($oldImage);
+
+                flash('product Successfully Update.')->success();
+                return redirect()->route('products.index');
+            } else {
+                $product = new Product();
+                $product->category_id  = $request->category_id;
+                $product->brand_id   = $request->brand_id;
+                $product->size_id   = $request->size_id;
+                $product->color_id   = $request->color_id;
+                $product->product_name  = $request->product_name;
+                $product->product_sku  = $request->product_sku;
+                $product->name_slug  = $slug;
+                $product->product_buy_price  = $request->product_buy_price;
+                $product->product_sell_price  = $request->product_sell_price;
+                $product->product_stock  = $request->product_stock;
+                $product->product_description  = $request->product_description;
+                $product->status = $request->status;
+                if ($product->isDirty()) {
+                    $product->update();
+                }
+
+                flash('product Successfully Update.')->success();
+                return redirect()->route('products.index');
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
 
@@ -94,6 +149,6 @@ class ProductController extends Controller
         unlink($product->product_img);
         $product->delete();
         flash('Product Delete Successfully ')->success();
-    return redirect()->route('products.index');
+        return redirect()->route('products.index');
     }
 }
