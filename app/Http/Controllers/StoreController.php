@@ -81,6 +81,8 @@ class StoreController extends Controller
      */
     public function destroy(Store $store)
     {
-        //
+        $store->delete();
+        flash('Store Delete Successfully ')->success();
+    return redirect()->route('stores.index');
     }
 }
