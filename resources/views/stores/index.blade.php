@@ -8,18 +8,18 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">  Categories List </h1>
+          <h1 class="m-0">  Store List </h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item active">Categry List</li>
+            <li class="breadcrumb-item active">Store List</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
- <a href="{{ route('categories.create') }}"  class="btn btn-success mb-3">Add Category</a>
+ <a href="{{ route('stores.create') }}"  class="btn btn-success mb-3">Add Store</a>
 
  <example-component> </example-component>
 
@@ -33,7 +33,7 @@
             
         </tr>
     </thead>
-    <tbody>
+    {{-- <tbody>
 
         @if ($categories)
         @foreach ($categories as $key=>$category)
@@ -57,7 +57,7 @@
        
        
         
-    </tbody>
+    </tbody> --}}
   
 </table>
 

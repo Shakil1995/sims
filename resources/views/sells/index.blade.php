@@ -1,5 +1,5 @@
 @extends('layouts.mastar')
 
 @section('content')
-    index
+  Store  index
 @endsection

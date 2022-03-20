@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellController;
+use App\Http\Controllers\StoreController;
 use \App\Http\Controllers\BrandController;
 use \App\Http\Controllers\ColorController;
 use \App\Http\Controllers\SizesController;
@@ -17,6 +18,7 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('/', function () { return view('dashboard');});
     
     Route::resource('categories',CategoriesController::class);
+    Route::resource('stores',StoreController::class);
     Route::resource('brands',BrandController::class);
     Route::resource('sizes',SizesController::class);
     Route::resource('colors',ColorController::class);
