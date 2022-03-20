@@ -29,22 +29,26 @@
         <tr class="text-center">
             <th>SL NO</th>
             <th>Store Name</th>
+            <th>Store Icon</th>
+            <th>Store Status</th>
             <th>Action</th>
             
         </tr>
     </thead>
-    {{-- <tbody>
+    <tbody>
 
-        @if ($categories)
-        @foreach ($categories as $key=>$category)
+        @if ($stores)
+        @foreach ($stores as $key=>$store)
         <tr class="text-center">
             <td><b>{{ ++$key }}</b></td>
-            <td>{{ $category->name }}</td>
+            <td>{{ $store->store_name }}</td>
+            <td>{{ $store->store_icon }}</td>
+            <td>{{ $store->store_type }}</td>
             <td >
-                <a href="{{ route('categories.edit',$category->id) }}" class="btn btn-sm btn-info"> <i class="fa fa-edit"></i></a>
-                <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="category-delete-{{ $category->id }}"> <i class="fa fa-trash"></i></a>
+                <a href="{{ route('stores.edit',$store->id) }}" class="btn btn-sm btn-info"> <i class="fa fa-edit"></i></a>
+                <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="store-delete-{{ $store->id }}"> <i class="fa fa-trash"></i></a>
             
-                <form id="category-delete-{{ $category->id }}" action="{{ route('categories.destroy',$category->id) }}" method="post">
+                <form id="store-delete-{{ $store->id }}" action="{{ route('stores.destroy',$store->id) }}" method="post">
                 @csrf
             @method('DELETE')
             </form>
@@ -57,7 +61,7 @@
        
        
         
-    </tbody> --}}
+    </tbody>
   
 </table>
 
