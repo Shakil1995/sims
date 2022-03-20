@@ -39,6 +39,13 @@
               <p>  Dashboard  </p>
             </a>  
           </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Sotre Name</p>
+            </a>
+          </li>
           
           <li class="nav-item">
             <a href="{{ route('categories.index') }}" class="nav-link">
