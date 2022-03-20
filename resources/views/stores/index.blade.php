@@ -28,7 +28,7 @@
     <thead>
         <tr class="text-center">
             <th>SL NO</th>
-            <th>Category Name</th>
+            <th>Store Name</th>
             <th>Action</th>
             
         </tr>
