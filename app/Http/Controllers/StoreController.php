@@ -4,85 +4,96 @@ namespace App\Http\Controllers;
 
 use App\Models\Store;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class StoreController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $viewBag['stores'] = Store::orderBy('id','desc')->get();
-        return view('stores.index',$viewBag);
+        $viewBag['stores'] = Store::orderBy('id', 'desc')->get();
+        return view('stores.index', $viewBag);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('stores.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        $photo = $request->store_icon;
+        $photoname = uniqid() . '.' . $photo->getClientOriginalExtension();
+        Image::make($photo)->resize(320, 240)->save(public_path('files/icon/' . $photoname));
+
+        try {
+            $store = new Store();
+            $store->store_name = $request->store_name;
+            $store->store_icon = 'files/icon/' . $photoname;
+            $store->store_type = $request->store_type;
+            $store->save();
+
+            flash('Store Successfully added.')->success();
+            return redirect()->route('stores.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Store  $store
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Store $store)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Store  $store
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Store $store)
     {
-        //
+        $viewBag['store'] = $store;
+        return view('stores.edit', $viewBag);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Store  $store
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Store $store)
     {
-        //
+        $oldImage = $request->oldImage;
+        $photo = $request->store_icon;
+        if ($photo) {
+            $photoname = uniqid() . '.' . $photo->getClientOriginalExtension();
+            Image::make($photo)->resize(320, 240)->save(public_path('files/icon/' . $photoname));
+
+            $store->store_name = $request->store_name;
+            $store->store_type = $request->store_type;
+            $store->store_icon = 'files/icon/'.$photoname;
+            if ($store->isDirty()) {
+                $store->update();
+            }
+
+            unlink($oldImage);
+
+            return redirect()->route('stores.index')
+                ->with('success', 'store  updated successfully');
+        } else {
+            $store->store_name = $request->store_name;
+            $store->store_type = $request->store_type;
+            if ($store->isDirty()) {
+                $store->update();
+            }
+               
+                flash('Store Update Successfully ')->success();
+                return redirect()->route('stores.index');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Store  $store
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Store $store)
     {
+        unlink($store->store_icon);
         $store->delete();
         flash('Store Delete Successfully ')->success();
-    return redirect()->route('stores.index');
+        return redirect()->route('stores.index');
     }
 }
