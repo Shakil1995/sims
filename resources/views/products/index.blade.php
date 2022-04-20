@@ -30,11 +30,11 @@
             <th style="width: 5%">SL NO</th>
             <th style="width: 10%">Image</th>
             <th>Name</th>
-            <th>SKU</th>
+            <th  style="width: 15%">SKU</th>
             <th style="width: 10%">Price</th>
             <th style="width: 10%">Stock</th>
             <th style="width: 10%">Status</th>
-            <th style="width: 10%">Action</th>
+            <th style="width: 15%">Action</th>
             
         </tr>
     </thead>
@@ -44,7 +44,7 @@
         @foreach ($products as $key=>$product)
         <tr class="text-center">
             <td><b>{{ ++$key }}</b></td>
-            <td>  <img src="{{URL::to($product->product_img)}}"  style="height: 70px; width:100px; " alt=""></td>
+            <td>  <img src="{{URL::to($product->product_img)}}"  style="height: 30px; width:50px; " alt=""></td>
             <td>{{ $product->product_name  }}</td>
             <td>{{ $product->product_sku }}</td>
             <td>{{ $product->product_sell_price }}</td>
