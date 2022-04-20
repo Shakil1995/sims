@@ -41,7 +41,19 @@
                 @foreach ($stores as $key => $store)
                     <tr class="text-center">
                         <td><b>{{ ++$key }}</b></td>
-                        <td> <img src="{{ URL::to($store->store_icon) }}" style="height: 50px; width:100px; " alt=""></td>
+                        <td>
+                             {{-- <img src="{{ URL::to($store->store_icon) }}" style="height: 50px; width:100px; " alt=""> --}}
+                             @if ($store->store_icon)
+                                                @if (file_exists(public_path('files/icon/' . $store->store_icon)))
+                                                    <img src="{{ asset('files/icon/' . $store->store_icon) }}"
+                                                        height="35" width="60">
+                                                @else
+                                                    <small>Image not exists in path</small>
+                                                @endif
+                                            @else
+                                                <small>No Image</small>
+                                            @endif
+                            </td>
                         <td>{{ $store->store_name }}</td>
                         <td>
                             @if ($store->store_type)

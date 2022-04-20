@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
-    private $_getColumns = (['id', 'store_name','store_icon','store_type']);
+    private $_getColumns = (['id', 'name']);
     public function index()
     {
         $viewBag['brands'] = Brand::orderBy('id','desc')->get($this->_getColumns);

@@ -63,8 +63,16 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">Old Image</label>
-                                        <img src="{{URL::to($store->store_icon)}}"  style="height: 70px; width:100px; " alt="">  
-                                        <input type="text" name="oldImage" value="{{ $store->store_icon }}">
+                                        @if ($store->store_icon)
+                                                @if (file_exists(public_path('files/icon/' . $store->store_icon)))
+                                                    <img src="{{ asset('files/icon/' . $store->store_icon) }}"
+                                                        height="70px" width="100px">
+                                                @else
+                                                    <small>Image not exists in path</small>
+                                                @endif
+                                            @else
+                                                <small>No Image</small>
+                                            @endif
                                         @if ($errors->has('store_icon'))
                                             <span class="text-danger">{{ $errors->first('store_icon') }}</span>
                                         @endif
